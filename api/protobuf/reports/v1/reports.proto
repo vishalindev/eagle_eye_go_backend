@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package eagleeye.reports.v1;
+
+option go_package = "example.com/eagle-eye/api/protobuf/reports/v1;reportsv1";
+
+service ReportsService {
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string service = 1;
+  string status = 2;
+}
