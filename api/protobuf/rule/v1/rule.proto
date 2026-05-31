@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package eagleeye.rule.v1;
+
+option go_package = "example.com/eagle-eye/api/protobuf/rule/v1;rulev1";
+
+service RuleService {
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string service = 1;
+  string status = 2;
+}

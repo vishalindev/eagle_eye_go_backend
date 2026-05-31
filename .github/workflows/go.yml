@@ -1,0 +1,31 @@
+name: Go Microservices CI
+
+on:
+  push:
+    paths:
+      - "go.work"
+      - "Makefile"
+      - "shared/**"
+      - "services/**"
+      - "api/protobuf/**"
+  pull_request:
+    paths:
+      - "go.work"
+      - "Makefile"
+      - "shared/**"
+      - "services/**"
+      - "api/protobuf/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.work
+          cache-dependency-path: |
+            shared/go.sum
+            services/*/go.sum
+      - name: Test workspace modules
+        run: make test

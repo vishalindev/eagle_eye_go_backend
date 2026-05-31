@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package eagleeye.platformuser.v1;
+
+option go_package = "example.com/eagle-eye/api/protobuf/platformuser/v1;platformuserv1";
+
+service PlatformuserService {
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string service = 1;
+  string status = 2;
+}
